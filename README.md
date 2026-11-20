@@ -125,3 +125,38 @@ MedFind V2 is initially intended as a demonstration platform. Simulated payments
 ## License
 
 All rights reserved. License terms to be determined.
+
+---
+
+## Current runnable demo and Render deployment
+
+The repository now includes a **single static browser app** with a Customer workspace and a Pharmacy workspace. Use the role selector at the top to switch between them. Both workspaces use the same browser-local demo state.
+
+### Demo accounts
+
+| Workspace | Email | Password |
+| --- | --- | --- |
+| Customer | `grace@medfind.demo` | `demo1234` |
+| Pharmacy | `pharmacy@medfind.demo` | `demo1234` |
+
+You can also create new accounts. Signup and password-reset verification both use the **demo code `123456`**. New users start with empty reservations, saved lists, or pharmacy inventory.
+
+### Deploy with Render
+
+This repository includes a ready-to-use [`render.yaml`](./render.yaml) Blueprint. In [Render](https://dashboard.render.com/), select **New → Blueprint**, connect `Chigozie-Isu/MedFind-V2`, and apply the Blueprint. Alternatively, use **New → Static Site** with:
+
+- Repository: `Chigozie-Isu/MedFind-V2`
+- Branch: `main`
+- Build command: `echo "Static demo - no build required"`
+- Publish directory: `.`
+
+Render will give you an `onrender.com` URL for the app. No Node.js server, npm installation, or environment variables are required for this static prototype.
+
+### Important limitations
+
+- Customer reservations, inventory adjustments, profile updates, notifications and payment-history entries are interactive **demo simulations**.
+- All information is stored in the **current browser's localStorage**; separate browsers/devices do not share state. Two tabs on the same origin update from browser storage events.
+- Authentication and password resets are simulated. Demo passwords are stored locally and **must not be used for real accounts**.
+- No actual payments, pharmacy verification, location tracking, prescription processing or delivery services occur.
+- The interface is an initial implementation based on the MedFind Figma design direction, **not yet a full screen-by-screen pixel-perfect conversion**.
+- A shared backend, secure authentication, production data model and complete integration tests are required before real-world use.
