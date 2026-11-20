@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: medfind-v2
+    runtime: static
+    repo: https://github.com/Chigozie-Isu/MedFind-V2
+    branch: main
+    buildCommand: echo "Static browser demo - no build required"
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
